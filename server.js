@@ -4,7 +4,6 @@ const path = require("path");
 const sqlite3 = require("sqlite3");
 const cors = require("cors");
 
-
 let db;
 const app = express();
 app.use(express.json());
@@ -16,8 +15,8 @@ const initializeDBandServer = async () => {
             filename: path.join(__dirname, "todo.db"),
             driver: sqlite3.Database,
         });
-        app.listen(3000, () => {
-            console.log("Server is running on http://localhost:3000/");
+        app.listen(3005, () => {
+            console.log("Server is running on http://localhost:3005/");
         });
     } catch (error) {
         console.log(`Database error is ${error.message}`);
@@ -49,7 +48,6 @@ app.post("/api/todos", async (req, res) => {
     }
 });
 
-
 app.get("/api/todos", async (req, res) => {
     try {
         const todos = await db.all("SELECT * FROM todos");
@@ -76,4 +74,3 @@ app.delete("/api/todos/:id", async (req, res) => {
         res.status(500).json({ error: "Internal Server Error" });
     }
 });
-
