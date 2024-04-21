@@ -1,1 +1,13 @@
-GET http://localhost:3005/api/todos/
+###
+POST http://localhost:3001/api/todos
+Content-Type: application/json
+
+{
+  "name":"Backend Code Deploying"
+}
+
+###
+GET http://localhost:3001/api/todos/
+
+###
+DELETE http://localhost:3001/api/todos/1
